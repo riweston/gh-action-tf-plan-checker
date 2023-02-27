@@ -6,7 +6,7 @@ using a CLI tool and return a non-zero exit code if that it is the case.
 ## Usage
 
 ```bash
-$ terraform plan -out=plan.out
+$ terraform plan -out=plan.json
 ...
   # local_file.this must be replaced
 -/+ resource "local_file" "this" {
@@ -18,7 +18,7 @@ $ terraform plan -out=plan.out
 Plan: 1 to add, 0 to change, 1 to destroy.
 ...
 
-$ tfplan-checker --tfplan plan.out
+$ tfplan-checker --terraform-plan plan.json
 2023/02/20 08:55:29 Deny Changes: [delete create]
 
 $ echo $?
@@ -40,9 +40,9 @@ COMMANDS:
    help, h  Shows a list of commands or help for one command
 
 GLOBAL OPTIONS:
-   --tfplan FILE, -p FILE  Load terraform plan from FILE
-   --allow-delete, -d      Allow delete actions (default: false)
-   --allow-update, -u      Allow update actions (default: false)
-   --allow-create, -c      Allow create actions (default: false)
-   --help, -h              show help
+   --terraform-plan FILE, -p FILE  Load terraform plan from FILE
+   --allow-delete, -d              Allow delete actions (default: false)
+   --allow-update, -u              Allow update actions (default: false)
+   --allow-create, -c              Allow create actions (default: false)
+   --help, -h                      show help
 ```
