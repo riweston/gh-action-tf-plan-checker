@@ -5,6 +5,10 @@ on:
   pull_request:
   push:
 
+permissions:
+    contents: write
+    packages: write
+
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
