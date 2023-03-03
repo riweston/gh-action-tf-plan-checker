@@ -18,7 +18,7 @@ $ terraform plan -out=plan.json
 Plan: 1 to add, 0 to change, 1 to destroy.
 ...
 
-$ tfplan-checker --terraform-plan plan.json
+$ tfplan-check --terraform-plan plan.json
 2023/02/20 08:55:29 Deny Changes: [delete create]
 
 $ echo $?
@@ -29,12 +29,12 @@ $ echo $?
 ## Flags
 
 ```bash
-$ tfplan-checker --help
+$ tfplan-check --help
 NAME:
-   tfplan-checker - A new cli application
+   tfplan-check - A new cli application
 
 USAGE:
-   tfplan-checker [global options] command [command options] [arguments...]
+   tfplan-check [global options] command [command options] [arguments...]
 
 COMMANDS:
    help, h  Shows a list of commands or help for one command

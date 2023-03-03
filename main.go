@@ -1,5 +1,5 @@
 /*
-Copyright © 2023 NAME HERE <EMAIL ADDRESS>
+Copyright © 2023 Richard Weston github@riweston.io
 */
 package main
 
@@ -33,6 +33,8 @@ var terraformPlanBin = false
 
 func main() {
 	app := &cli.App{
+		Name:  "tfplan-check",
+		Usage: "Check terraform plan for actions",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:     "terraform-plan",
