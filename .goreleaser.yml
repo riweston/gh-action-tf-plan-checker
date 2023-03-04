@@ -3,8 +3,16 @@ builds:
       - darwin
       - linux
       - windows
+    goarch:
+      - amd64
+      - arm64
     binary: tfplan-check
+    env: [ CGO_ENABLED=0 ]
 dockers:
-  - image_templates:
-      - "ghcr.io/riweston/tfplan-check:latest"
-      - "ghcr.io/riweston/tfplan-check:{{ .Tag }}"
+  - image_templates: [ "ghcr.io/riweston/tfplan-check:latest-amd64" ]
+    use: buildx
+    build_flag_templates: [ "--platform=linux/amd64" ]
+  - image_templates: [ "ghcr.io/riweston/tfplan-check:latest-amd64v8" ]
+    goarch: arm64
+    use: buildx
+    build_flag_templates: [ "--platform=linux/arm64/v8" ]
