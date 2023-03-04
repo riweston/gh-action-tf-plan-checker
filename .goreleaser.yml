@@ -4,3 +4,7 @@ builds:
       - linux
       - windows
     binary: tfplan-check
+dockers:
+  - image_templates:
+      - "ghcr.io/riweston/tfplan-check:latest"
+      - "ghcr.io/riweston/tfplan-check:{{ .Tag }}"
