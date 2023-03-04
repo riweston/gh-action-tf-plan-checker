@@ -47,18 +47,21 @@ func main() {
 				Aliases: []string{"d"},
 				Usage:   "Allow delete actions",
 				Value:   false,
+				EnvVars: []string{"TFPLAN_CHECK_ALLOW_DELETE"},
 			},
 			&cli.BoolFlag{
 				Name:    "allow-update",
 				Aliases: []string{"u"},
 				Usage:   "Allow update actions",
 				Value:   false,
+				EnvVars: []string{"TFPLAN_CHECK_ALLOW_UPDATE"},
 			},
 			&cli.BoolFlag{
 				Name:    "allow-create",
 				Aliases: []string{"c"},
 				Usage:   "Allow create actions",
 				Value:   false,
+				EnvVars: []string{"TFPLAN_CHECK_ALLOW_CREATE"},
 			},
 		},
 		Action: func(cCtx *cli.Context) error {
