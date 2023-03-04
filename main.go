@@ -110,16 +110,20 @@ func checkPlanType(plan string) {
 		getTerraformPath()
 		showPlan(planPath)
 	} else {
-		log.Fatalf("Plan is not a valid json file")
+		showPlanJson(planPath)
 	}
 }
 
 func showPlanJsonE(plan string) error {
-	planBytes := []byte(plan)
+	planBytes, err := os.ReadFile(plan)
+	if err != nil {
+		return fmt.Errorf("error reading plan file: %s", err)
+	}
 	if json.Valid(planBytes) {
 		return json.Unmarshal(planBytes, &terraformPlan)
+	} else {
+		return fmt.Errorf("plan is not a valid json file")
 	}
-	return nil
 }
 
 func showPlanJson(plan string) {
