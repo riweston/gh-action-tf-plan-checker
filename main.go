@@ -41,6 +41,7 @@ func main() {
 				Aliases:  []string{"p"},
 				Usage:    "Load terraform plan from `FILE`",
 				Required: true,
+				EnvVars:  []string{"TFPLAN_CHECK_TERRAFORM_PLAN"},
 			},
 			&cli.BoolFlag{
 				Name:    "allow-delete",
