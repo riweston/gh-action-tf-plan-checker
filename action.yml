@@ -17,9 +17,9 @@ inputs:
 runs:
   using: 'docker'
   image: 'ghcr.io/riweston/tfplan-check:latest-amd64
+  args:
+    - "--terraform-plan ${{ inputs.terraform-plan }}"
   env:
     TFPLAN_CHECK_ALLOW_CREATE: ${{ inputs.allow-create }}
     TFPLAN_CHECK_ALLOW_DESTROY: ${{ inputs.allow-destroy }}
     TFPLAN_CHECK_ALLOW_UPDATE: ${{ inputs.allow-update }}
-  args:
-    - --terraform-plan ${{ inputs.terraform-plan }}
