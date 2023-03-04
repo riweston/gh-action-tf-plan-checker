@@ -1,0 +1,25 @@
+---
+name: tfplan-check
+description: 'Check Terraform plan files for allowed actions'
+inputs:
+  terraform-plan:
+    description: 'Terraform plan filepath (filetype must be JSON)'
+    required: true
+  allow-create:
+    description: 'Allow create operations'
+    required: false
+  allow-destroy:
+    description: 'Allow destroy operations'
+    required: false
+  allow-update:
+    description: 'Allow update operations'
+    required: false
+runs:
+  using: 'docker'
+  image: 'ghcr.io/riweston/tfplan-check:latest-amd64
+  env:
+    TFPLAN_CHECK_ALLOW_CREATE: ${{ inputs.allow-create }}
+    TFPLAN_CHECK_ALLOW_DESTROY: ${{ inputs.allow-destroy }}
+    TFPLAN_CHECK_ALLOW_UPDATE: ${{ inputs.allow-update }}
+  args:
+    - --terraform-plan ${{ inputs.terraform-plan }}
